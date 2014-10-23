@@ -1,5 +1,6 @@
 package com.trungpt.flappybird;
 
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -15,6 +16,9 @@ public class Bird
     private int with;
     private int height;
 
+    private Circle boundingCircle;
+
+
     public Bird(float x, float y, int with, int height)
     {
         this.with = with;
@@ -22,6 +26,7 @@ public class Bird
         this.position = new Vector2(x, y);
         this.velocity = new Vector2(0, 0);
         this.acceleration = new Vector2(0, 460);
+        this.boundingCircle = new Circle();
     }
 
     public void update(float delta)
@@ -32,6 +37,7 @@ public class Bird
             velocity.y = 200;
         }
         position.add(velocity.cpy().scl(delta));
+        boundingCircle.set(position.x+9,position.y + 6 ,6.5f);
         // Rotate counterclockwise
         if (velocity.y < 0)
         {
@@ -91,5 +97,15 @@ public class Bird
     public float getRotation()
     {
         return rotation;
+    }
+
+    public Circle getBoundingCircle()
+    {
+        return boundingCircle;
+    }
+
+    public void setBoundingCircle(Circle boundingCircle)
+    {
+        this.boundingCircle = boundingCircle;
     }
 }

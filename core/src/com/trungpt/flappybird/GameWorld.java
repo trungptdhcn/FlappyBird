@@ -20,6 +20,7 @@ public class GameWorld
     {
         bird.update(delta);
         scrollHandler.update(delta);
+        if ()
     }
 
     public Bird getBird()
